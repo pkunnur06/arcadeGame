@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #box{
+            background-color: tomato;
+        }
+    </style>
+</head>
+<body>
+    <div class="div">
+    <canvas id="box" width="600" height="700"></canvas>
+    </div>
+    <script>
+        let canvas=document.querySelector("#box");
+        ctx=canvas.getContext("2d");
+        waterBlock();
+        function waterBlock(){
+            waterImages= new Image();
+            waterImages.src="water-block.png";
+            waterImages.onload=function (){
+                for(let i=0.5;i<5;i++){
+                    ctx.drawImage(waterImages,101*i,0);
+                }
+                stoneBlock();
+            }
+        }
+        function stoneBlock(){
+            stoneImages= new Image();
+            stoneImages.src="stone-block.png";
+            stoneImages.onload=function (){
+                for(let i=0.5;i<5;i++){
+                    ctx.drawImage(stoneImages,101*i,85);
+                }
+                stoneBlock1();
+            }
+        }
+        function stoneBlock1(){
+            stoneImages= new Image();
+            stoneImages.src="stone-block.png";
+            stoneImages.onload=function (){
+                for(let i=0.5;i<5;i++){
+                    ctx.drawImage(stoneImages,101*i,170);
+                }
+                stoneBlock2();
+            }
+        }
+        function stoneBlock2(){
+            stoneImages= new Image();
+            stoneImages.src="stone-block.png";
+            stoneImages.onload=function (){
+                for(let i=0.5;i<5;i++){
+                    ctx.drawImage(stoneImages,101*i,255);
+                }
+                grassBlock();
+            }
+        }
+        function grassBlock(addTo=0){
+            grassImages= new Image();
+            grassImages.src="grass-block.png";
+            grassImages.onload=function (){
+                for(let i=0.5;i<5;i++){
+                    ctx.drawImage(grassImages,101*i,340);
+                }
+                grassBlock1(); //Asynchronous
+            }
+        }
+        function grassBlock1(){
+            grassImages= new Image();
+            grassImages.src="grass-block.png";
+            grassImages.onload=function (){
+                for(let i=0.5;i<5;i++){
+                    ctx.drawImage(grassImages,101*i,425);
+                }
+                enemyBlock();
+                enemyBlock(90);
+                enemyBlock(170);
+                keyBlock();
+                boyBlock();
+            }
+        }        
+        function enemyBlock(addTo=0){
+            enemyImage= new Image();
+            enemyImage.src="enemy-bug.png";
+            enemyImage.onload=function (){
+                    ctx.drawImage(enemyImage,50,58+addTo);
+            }
+        }
+        function keyBlock(addTo=0){
+            keyImage= new Image();
+            keyImage.src="Key.png";
+            keyImage.onload=function (){
+                for(let i=0.5;i<5;i++){
+                    ctx.drawImage(keyImage,i*101,-10);
+                }
+            }
+        }
+        function boyBlock(){
+            boyImage= new Image();
+            boyImage.src="char-boy.png";
+            boyImage.onload=function (){
+                    ctx.drawImage(boyImage,255,400);
+            }
+        }
+    </script>
+</body>
+</html>
